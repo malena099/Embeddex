@@ -3,7 +3,7 @@ var modelsSelect = document.getElementById('models');
 var fechaSelect = document.getElementById('fecha');
 
    
-const url = "http://localhost:3000/Selecciona";
+const url = "/Selecciona";
 
 
 fetch(url)
