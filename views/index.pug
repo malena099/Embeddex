@@ -1,8 +1,19 @@
 extends master
 block content 
-    form(action="/" method="POST" id="agregar-url")
-        legend Añade tu URL en el siguiente formulario
-        .campo
-            input(type="url" name="urlOriginal" id="urlOriginal" placeholder="Añade tu URL" required)
-        .campo.enviar
-            input(type="submit" class="btn" value="Acortar")
+
+        .container.text-center
+        .row
+            br
+        .row
+        .col
+        font(style='vertical-align: inherit;')
+        font(style='vertical-align: inherit;')
+          #selectores.btn-group(style='width: 600px;' role='group' aria-label='Grupo de botones con menú desplegable anidado')
+            .btn-group(role='group' style='width: 200px;')
+              select.btn.btn-success.dropdown-toggle(id='marcas' name='marcas' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false' )
+            .btn-group(role='group' style='width: 200px;')
+              select.btn.btn-info.dropdown-toggle(id='models' name='models' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false' disabled)
+            .btn-group(role='group' style='width: 200px;')
+              select#fecha.btn.btn-danger.dropdown-toggle( type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false' disabled)
+        div(id='container' name='container')
+        script(src='js/scripts.js')

@@ -1,59 +1,78 @@
-const formulario = document.querySelector('#agregar-url');
-formulario.addEventListener('submit', async e => {
-    e.preventDefault();
+var marcasSelect = document.getElementById('marcas');
+var modelsSelect = document.getElementById('models');
+var fechaSelect = document.getElementById('fecha');
 
-    const urlOriginal = document.querySelector('#urlOriginal').value;
-
-    console.log(e.target);
-    const respuesta = await fetch(e.target.action, {
-        method: e.target.method,
-        headers: {
-            'Accept' : 'application/json',
-            'Content-Type' : 'application/json'
-        }, 
-        body: JSON.stringify({ urlOriginal })
-    } );
-
-    const resultado = await respuesta.json();
-
-    // ELIMINAR LOS MENSAJES ANTERIORES
-    const alertas =  document.querySelector('.mensaje-url');
-    if(alertas) {
-        document.querySelector('.mensaje-url').remove();
-    }
    
+const url = "http://localhost:3000/Selecciona";
+
+
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        loadCars(data);})
+
+function loadCars(data) {
+    marcas = new Set()
     
+    for (var i=0; i<48; i++) {
+        marcas.add("Elige coche");
+        marcas.add(data.coche[i].marcas);
+    };
+    console.log(marcas);
+    loadSelect("marcas", marcas);
+    marcasSelect.addEventListener("change", loadSelect2);
+    marcasSelect.addEventListener("change", loadSelect3);
+    modelsSelect.addEventListener("change", loadSelect3);
 
-    // verificar si todo esta bien
-    if(resultado.codigo === 201) {
-        // construir un mensaje de que todo se creo bien
-        const mensaje = document.createElement('div');
-        mensaje.classList.add('mensaje-url');
-        mensaje.innerHTML = `<p>Se ha acortado correctamente la URL, vísita <a target="_blank" rel="noopener noreferrer" href="/${resultado.url}"> el enlace aquí</a> </p> `;
+//colocamos los datos en un archivo json con su formato
+function getModelosForMarca(marcas) {
+    
+    let models = new Set()
+    
+    for (var i=0; i<48; i++) {
+        models.add("Elige Modelo");
+        if (data.coche[i].marcas === marcas) {
+            models.add(data.coche[i].modelos);
+        }
+    }
+    
+    return models;
+}
+function getFechasForMarcaAndModelo(marcas, models) {
 
-        const contenedor = document.querySelector('main');
-        contenedor.appendChild(mensaje);
-    } else {
-        // construir un mensaje de error
-        const mensaje = document.createElement('div');
-        mensaje.classList.add('mensaje-url', 'error');
-        mensaje.innerHTML = `<p>${resultado.error}</p>`;
-
-        const contenedor = document.querySelector('main');
-        contenedor.appendChild(mensaje);
+    let fechas = new Set()
+            
+    for (var i=0; i<48; i++) {
+        fechas.add("Elige Fecha");
+        if (data.coche[i].marcas === marcas && data.coche[i].modelos === models) {
+            fechas.add(data.coche[i].periodo);
+        }
+    }
+    
+    return fechas;
+}
+function loadSelect(id, values) {
+    let selectElement = document.getElementById(id);
+    selectElement.innerHTML = ''
+    for (let value of values) {
+        selectElement.add(new Option(value));  
+      };
+    $('#marcas').change(function(){
+        $('#models').removeAttr('disabled');
+      });
     }
 
-});
-
-// Si hay un error en el querystring
-const urlParams = new URLSearchParams(window.location.search);
-
-if(urlParams.has('error')) {
-    // construir un template
-    const mensaje = document.createElement('div');
-    mensaje.classList.add('mensaje-url', 'error');
-    mensaje.innerHTML = `<p>URL no válida</p>`;
-
-    const contenedor = document.querySelector('main');
-    contenedor.appendChild(mensaje);
+function loadSelect2() {
+    if(marcasSelect.value !== "Elige un coche"){
+        $('#models').change(function(){
+        $('#fecha').removeAttr('disabled');
+    });
+        loadSelect('models', getModelosForMarca(marcasSelect.value));
+    }
 }
+
+function loadSelect3() {
+        loadSelect('fecha', getFechasForMarcaAndModelo(marcasSelect.value, modelsSelect.value));
+        console.log(getFechasForMarcaAndModelo(marcasSelect.value, modelsSelect.value));
+}
+};

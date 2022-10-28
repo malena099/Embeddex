@@ -16,9 +16,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Conectar Mongo
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URL, {
-    useNewUrlParser: true
-})
+mongoose.connect("mongodb://localhost:27017/dato")
+    .then(() => {
+    
+        console.log("Conexión a la base de datos establecida con éxito");
+    })
+
 
 // Habilitar pug
 app.set('view engine', 'pug');

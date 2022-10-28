@@ -1,23 +1,20 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const shortid = require('shortid');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-const urlSchema = new Schema({
-    urlOriginal: {
-        type: String,
-        lowercase: true,
-        trim: true,
-        required: 'Agrega una URL'
-    }, 
-    urlCorta: {
-        type: String
-    }
-});
-// Métodos de mongoose
-urlSchema.pre('save', async function(next) {
-    // generar la URL corta
-    this.urlCorta = shortid.generate();
-    next();
+var CocheSchema = new Schema({
+    marcas : String,
+    modelos : String,
+    periodo : String,
+    imagenes: String,
+    tecnologia: String,
+    celdas: String,
+    Tension_Nominal: String,
+    Tension_Min: String,
+    Tension_Max: String,
+    Carga_Nominal: String,
+    Corriente_Carga: String,
+    Temperatura: String,
+    Modulo: String
 });
 
-module.exports = mongoose.model('Urls', urlSchema);
+module.exports = mongoose.model('Coche', CocheSchema);
