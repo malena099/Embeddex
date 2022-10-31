@@ -1,19 +1,107 @@
-extends master
-block content 
-
-        .container.text-center
-        .row
-            br
-        .row
-        .col
-        font(style='vertical-align: inherit;')
+doctype html
+head
+  title Elecci&oacute;n del Coche
+  link(href='./css/bootstrap.css' rel='stylesheet' type='text/css')
+  link(href='./css/estilos.css' rel='stylesheet' type='text/css')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+.container.text-center
+  .row
+    br
+  .row
+    .col
+      font(style='vertical-align: inherit;')
         font(style='vertical-align: inherit;')
           #selectores.btn-group(style='width: 600px;' role='group' aria-label='Grupo de botones con menú desplegable anidado')
             .btn-group(role='group' style='width: 200px;')
-              select.btn.btn-success.dropdown-toggle(id='marcas' name='marcas' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false' )
+              select#marcas.btn.btn-success.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             .btn-group(role='group' style='width: 200px;')
-              select.btn.btn-info.dropdown-toggle(id='models' name='models' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false' disabled)
+              select#models.btn.btn-info.dropdown-toggle(disabled='' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             .btn-group(role='group' style='width: 200px;')
-              select#fecha.btn.btn-danger.dropdown-toggle( type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false' disabled)
-        div(id='container' name='container')
-        script(src='js/scripts.js')
+              select#fecha.btn.btn-danger.dropdown-toggle(disabled='' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+  .row
+    .col
+      div(align='center')
+        img#imagen(style='text-align: center; top: 25%;\
+        position: absolute;' name='imagen' width='30%' alt='')
+    .col
+      #botonConfirmacion.card.border-primary.mb-3(style='top: 55%;\
+      left: 50%; align-items: center;\
+      height: 240px;max-width: 25rem;display: none')
+        // El cuadrante donde el usuario confirma que es el coche que tiene delante
+        .d-grid.gap-2
+          br
+          | &iquest;Es este el coche al que pertenece la bater&iacute;a?
+          button.btn.btn-lg.btn-primary(id='btn1' type='button')
+            font(style='vertical-align: inherit;')
+              font(style='vertical-align: inherit;') S&iacute;
+          button.btn.btn-lg.btn-primary(id='btn2' type='button')
+            font(style='vertical-align: inherit;')
+              font(style='vertical-align: inherit;') No
+      #infoCelda2.card.border-primary.mb-3(style='max-width: 22rem;display: none; left: 40%; top: 40px;')
+        .card-body
+          h4.card-title
+            font(style='vertical-align: inherit;')
+              font(style='vertical-align: inherit;') Caracter&iacute;sticas
+          p.card-text
+            font(style='vertical-align: inherit;')
+              font(style='vertical-align: inherit;')
+                | Tecnolog&iacute;a: 
+                span#t2
+                br
+                | Voltaje: 
+                span#v
+                |  V
+                br
+                |           Voltaje M&iacute;nimo: 
+                span#mv2
+                |  V
+                br
+                |           Voltaje M&aacute;ximo: 
+                span#mxv2
+                |  V
+                br
+                |           Carga Nominal: 
+                span#Carganom2
+                |  mAh
+                br
+                |           Corriente de carga: 
+                span#CorCarga2
+                |  mAh
+                br
+                |           Temperatura: 
+                span#Temp2
+                | &deg;C
+  .row
+    .col
+      div(id='Contenedor2')
+        div(align='center')
+          img#cell(style='text-align: center; top: 45%;\
+          position: absolute;' name='cell' width='20%' alt='')
+    .col
+      #botonConfirmacion2.card.border-primary.mb-3(style='top: 35%; left:40%; align-items: center; height: 230px;max-width: 22rem;display: none; text-align: center;')
+        .d-grid.gap-2(style='width:280px; margin: 0 auto;')
+          br
+          |  &iquest;Es esta la celda a estudiar?
+          button.btn.btn-lg.btn-primary(onclick='ConfirmDemo()' type='button')
+            font(style='vertical-align: inherit;')
+              font(style='vertical-align: inherit;') S&iacute;
+          button.btn.btn-lg.btn-primary(onclick='Negacionbutton()' type='button')
+            font(style='vertical-align: inherit;')
+              font(style='vertical-align: inherit;') No
+#Contenedor1
+  // En las siguientes líneas creamos los selects para la elección del vehículo
+  .preload
+    .emoji
+  // El cuadrante donde el usuario confirma que es el coche que tiene delante
+.row
+  .col-md-auto
+    .navigation
+      img(src='./img/logo.png' style='width: 10%; position: fixed; left: 3%; top: 90%')
+      img(src='./img/arrow-left-square.svg' type='button' onclick='location.reload()' style='width: 3%; position: fixed; left: 93%; top: 93%')
+.row
+  #Contenedor2.col
+    div(align='center')
+      img(id='cell' style='text-align: center; top: 45%;\
+      position: absolute;' name='cell' width='20%' alt='')
+script(src='./js/scripts.js')

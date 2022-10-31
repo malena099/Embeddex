@@ -13,8 +13,7 @@ var CocheSchema = new Schema({
     Tension_Max: String,
     Carga_Nominal: String,
     Corriente_Carga: String,
-    Temperatura: String,
-    Modulo: String
+    Temperatura: String
 });
 
 module.exports = mongoose.model('Coche', CocheSchema);
