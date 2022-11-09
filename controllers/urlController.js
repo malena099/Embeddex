@@ -1,4 +1,5 @@
-var Coche = require('../models/Url');
+var Prueba = require('../models/Url');
+var Celda = require('../models/Celdas');
 /* var fs = require('fs');
 var path = require('path');
  */
@@ -9,8 +10,13 @@ home: async function(req,res){
 },
 
 getCoches: async function(req, res){
-    const coche = await Coche.find();
-    res.json({coche});
+    const prueba = await Prueba.find();
+    res.json({prueba});
+},
+
+getCeldas: async function(req, res){
+    const celda = await Celda.find();
+    res.json({celda});
 }
 
 };

@@ -12,13 +12,17 @@ head
     .col
       font(style='vertical-align: inherit;')
         font(style='vertical-align: inherit;')
-          #selectores.btn-group(style='width: 600px;' role='group' aria-label='Grupo de botones con menú desplegable anidado')
+          #selectores.btn-group(style='width: 900px;' role='group' aria-label='Grupo de botones con menú desplegable anidado')
             .btn-group(role='group' style='width: 200px;')
               select#marcas.btn.btn-success.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-            .btn-group(role='group' style='width: 200px;')
+            .btn-group(role='group' style='width: 300px;')
               select#models.btn.btn-info.dropdown-toggle(disabled='' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
             .btn-group(role='group' style='width: 200px;')
+              select#bateria.btn.btn-info.dropdown-toggle(disabled='' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            .btn-group(role='group' style='width: 300px;')
               select#fecha.btn.btn-danger.dropdown-toggle(disabled='' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+          select#celdacoche(style='display:none')
+ 
   .row
     .col
       div(align='center')
@@ -104,4 +108,5 @@ head
     div(align='center')
       img(id='cell' style='text-align: center; top: 45%;\
       position: absolute;' name='cell' width='20%' alt='')
-script(src='./js/scripts.js')
+script(src='./js/Selectores1.js')
+script(src='./js/Confirma.js')
