@@ -1,3 +1,5 @@
+//En las siguientes lineas cargamos la base de datos de las celdas
+
 var CeldaSelect = document.getElementById('celdacoche');
 var cell = document.getElementById('cell');
 
@@ -15,7 +17,7 @@ function loadCell(data) {
     for (var i=0; i<3; i++) {
         celda.add(data.celda[i].modelo);
     };
-    
+    // ponemos en un nuevo conjunto la imagen de la celda seleccionada
     function getCelda(celda) {
     
         let imgcel = []
@@ -29,19 +31,25 @@ function loadCell(data) {
         return imgcel;
     }
     
-    
+   //Las siguientes lineas son para aceptar o rechazar la celda elegida 
     
     const btn=document.querySelector("#btn1");
     const btn2=document.querySelector("#btn2");
-    
+    const btn3=document.querySelector("#btn3");
     
     btn.addEventListener("click", ConfirmDemo);
     btn2.addEventListener("click", Negacionbutton);
-    
+    btn3.addEventListener("click", Negacionbutton);
+
+
     function ConfirmDemo() {
+
         //Ingresamos un mensaje a mostrar
+
         alert("Has confirmado su elección");
+
         // Con el siguiente código enseñamos los datos de la celda
+        
         document.getElementById("botonConfirmacion").style.display="none";
         document.getElementById("selectores").style.display="none";
         document.getElementById("botonConfirmacion2").style.display="block";
@@ -56,6 +64,7 @@ function loadCell(data) {
         alert("Vuelva a introducir el modelo.");
         location.reload()
     };
+
 
 };
 

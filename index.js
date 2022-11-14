@@ -10,9 +10,14 @@ require('dotenv').config({path: 'variables.env'});
 
 const app = express();
 
+const server = require('http').Server(app);
+const socketio = require ('socket.io')(server);
+
 // Body parser para leer los datos del formulario
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 // Conectar Mongo
 mongoose.Promise = global.Promise;
@@ -35,9 +40,13 @@ app.use(express.static('public'));
 // Definir rutas de la aplicación
 app.use('/', routes());
 
+// conectar con los clientes
+
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 3000;
 
-app.listen(port, host, () => {
+require('./sockets')(socketio);
+
+server.listen(port, host, () => {
     console.log("el servidor esta funcionando");
 });
