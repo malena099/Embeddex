@@ -61,8 +61,13 @@ function loadCell(data) {
 };
     
     function Negacionbutton(){
-        alert("Vuelva a introducir el modelo.");
-        location.reload()
+        document.getElementById("alertando").style.display='block';
+        document.getElementById("botonConfirmacion").style.display="none";
+        document.getElementById("botonConfirmacion2").style.display="none";
+        document.getElementById("imagen").style.display='none';
+        document.getElementById("cell").style.display='none';
+        document.getElementById("selectores").style.display="none";
+        document.getElementById("infoCelda2").style.display="none";
     };
 
 

@@ -50,43 +50,43 @@ head
           button.btn.btn-lg.btn-primary(id='btn2' type='button')
             font(style='vertical-align: inherit;')
               font(style='vertical-align: inherit;') No
-      
-      // Al confirmar el modelo aparece otro boton de confirmacion junto con algunas caracteristicas
 
-      #infoCelda2.card.border-primary.mb-3(style='max-width: 22rem;display: none; left: 40%; top: 40px;')
-        .card-body
-          h4.card-title
-            font(style='vertical-align: inherit;')
-              font(style='vertical-align: inherit;') Caracter&iacute;sticas
-          p.card-text
-            font(style='vertical-align: inherit;')
-              font(style='vertical-align: inherit;')
-                | Tecnolog&iacute;a: 
-                span#t2
-                br
-                | Voltaje: 
-                span#v
-                |  V
-                br
-                |           Voltaje M&iacute;nimo: 
-                span#mv2
-                |  V
-                br
-                |           Voltaje M&aacute;ximo: 
-                span#mxv2
-                |  V
-                br
-                |           Carga Nominal: 
-                span#Carganom2
-                |  mAh
-                br
-                |           Corriente de carga: 
-                span#CorCarga2
-                |  mAh
-                br
-                |           Temperatura: 
-                span#Temp2
-                | &deg;C
+  // Al confirmar el modelo aparece otro boton de confirmacion junto con algunas caracteristicas
+
+  #infoCelda2.card.border-primary.mb-3(style='max-width: 22rem;display: none; left: 70%; top: 40px;vertical-align: inherit;')
+    .card-body
+      h4.card-title
+        font(style='vertical-align: inherit;')
+          font(style='vertical-align: inherit;') Caracter&iacute;sticas
+      p.card-text
+        font(style='vertical-align: inherit;')
+          font(style='vertical-align: inherit;')
+            | Tecnolog&iacute;a: 
+            span#t2
+            br
+            | Voltaje: 
+            span#v
+            |  V
+            br
+            |           Voltaje M&iacute;nimo: 
+            span#mv2
+            |  V
+            br
+            |           Voltaje M&aacute;ximo: 
+            span#mxv2
+            |  V
+            br
+            |           Carga Nominal: 
+            span#Carganom2
+            |  mAh
+            br
+            |           Corriente de carga: 
+            span#CorCarga2
+            |  mAh
+            br
+            |           Temperatura: 
+            span#Temp2
+            | &deg;C
   .row
     .col
       div(id='Contenedor2')
@@ -105,6 +105,11 @@ head
             font(style='vertical-align: inherit;')
               font(style='vertical-align: inherit;') No
 
+div(id='alertando' style='margin:0 auto;vertical-align: inherit; flex-flow: column wrap; padding: 0; display:none; width: 50%; height: 60px;aling-items:center; text-align: center;' class="alert alert-warning alert-dismissible fade show" role="alert")
+    br
+    b
+      | Vuelva a introducir el modelo.
+    button(type="button" id='aceptando' class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick='location.reload()')
 #Contenedor1
   .preload
     .emoji

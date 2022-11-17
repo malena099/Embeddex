@@ -4759,7 +4759,7 @@ textarea.form-control-lg {
 }
 
 .alert-warning {
-  --bs-alert-color: #997404;
+  --bs-alert-color: #b38706;
   --bs-alert-bg: #fff3cd;
   --bs-alert-border-color: #ffecb5;
 }
@@ -11485,7 +11485,7 @@ textarea.form-control-lg {
   box-shadow: 8px 8px 40px rgba(0, 0, 0, 0.15), inset 1px 1px 3px rgba(222, 224, 253, 0.4), inset -5px -5px 20px rgba(18, 20, 49, 0.05);
 }
 .alert-warning {
-  background-color: rgba(255, 193, 7, 0.75);
+  background-color: rgba(255, 193, 7, 1);
   box-shadow: 8px 8px 40px rgba(0, 0, 0, 0.15), inset 1px 1px 3px rgba(255, 243, 205, 0.4), inset -5px -5px 20px rgba(51, 39, 1, 0.05);
 }
 .alert-danger {
