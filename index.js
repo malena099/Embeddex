@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Conectar Mongo
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URL,)
+mongoose.connect(process.env.DB_URL)
     .then(() => {
     
         console.log("Conexión a la base de datos establecida con éxito");
